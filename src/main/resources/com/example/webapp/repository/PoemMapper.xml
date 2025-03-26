@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.webapp.repository.PoemMapper">
+    <!-- 전체 검색 -->
+    <select id="selectAllPoem" resultType="com.example.webapp.entity.Poem">
+        SELECT id, title, author, contents FROM poems
+    </select>
+
+    <!-- 1건 검색 -->
+    <select id="selectPoemById" resultType="com.example.webapp.entity.Poem">
+        SELECT id, title, author, contents FROM poems WHERE id = #{id}
+    </select>
+
+    <!-- 등록 -->
+    <insert id="insertPoem">
+        INSERT INTO poems (title, author, contents)
+        VALUES (#{title}, #{author}, #{contents})
+    </insert>
+
+    <!-- 수정 -->
+    <update id="updatePoem" parameterType="int">
+        UPDATE poems SET title = #{title}, author = #{author}, contents = #{contents} WHERE id = #{id}
+    </update>
+
+    <!-- 삭제 -->
+    <delete id="deletePoem" parameterType="int">
+        DELETE FROM poems WHERE id = #{id}
+    </delete>
+</mapper>
