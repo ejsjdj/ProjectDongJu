@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.webapp.repository.CommentMapper">
+    <!-- 해당시의 댓글 검색 -->
+    <select id="selectCommentById" resultType="com.example.webapp.entity.Comment" parameterType="int">
+        SELECT id, title, author, contents FROM comments WHERE poemId = #{poemId}
+    </select>
+
+    <!-- 등록 -->
+    <insert id="insertComment">
+        INSERT INTO comments (nickname, password, comment, poemId)
+        VALUES (#{nickname}, #{password}, #{comment}, #{poemId})
+    </insert>
+
+    <!-- 대댓글 등록 -->
+    <insert id="insertRecomment">
+        INSERT INTO comments (nickname, password, comment, poemId, parentCommentId)
+        VALUE (#{nickname}, #{password}, #{comment}, #{poemId}, #{parentCommentId})
+    </insert>
+
+    <!-- 삭제 -->
+    <delete id="deleteComment" parameterType="int">
+        DELETE FROM poems WHERE id = #{id}
+    </delete>
+</mapper>

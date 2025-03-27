@@ -15,30 +15,30 @@ import java.util.List;
 public class PoemServiceImpl implements PoemService {
 
     /** DI */
-    private final PoemMapper toPoemMapper;
+    private final PoemMapper poemMapper;
 
     @Override
     public List<Poem> findAllPoem() {
-        return toPoemMapper.selectAllPoem();
+        return poemMapper.selectAllPoem();
     }
 
     @Override
     public Poem findPoemById(Integer id) {
-        return toPoemMapper.selectPoemById(id);
+        return poemMapper.selectPoemById(id);
     }
 
     @Override
     public void insertPoem(Poem poem) {
-        toPoemMapper.insertPoem(poem);
+        poemMapper.insertPoem(poem);
     }
 
     @Override
     public void updatePoem(Poem poem) {
-        toPoemMapper.updatePoem(poem);
+        poemMapper.updatePoem(poem);
     }
 
     @Override
     public void deletePoem(Integer id) {
-        toPoemMapper.deletePoem(id);
+        poemMapper.deletePoem(id);
     }
 }
